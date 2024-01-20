@@ -1,23 +1,21 @@
 import React from "react";
 import Transaction from "./Transaction";
+import { useTransactions } from "../../Context/Context";
 
 const Transactions = () => {
+  const { expenseState, expenseDispatch } = useTransactions();
+  const { transactions } = expenseState;
   return (
     <div className="shadow-xl rounded-xl">
       <h2 className="text-center text-lg mb-2">Transactions</h2>
       <div className="">
-        <Transaction
-          type="expense"
-          amount="$100"
-          category="Mobile"
-          date="01/19/2024"
-        />
-        <Transaction
-          type="income"
-          amount="$200"
-          category="Salary"
-          date="01/19/2024"
-        />
+        {transactions.map((transaction) => (
+          <Transaction
+            key={transaction.id}
+            data={transaction}
+            dispatch={expenseDispatch}
+          />
+        ))}
       </div>
     </div>
   );

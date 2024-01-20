@@ -3,7 +3,8 @@ import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-const Transaction = ({ type, amount, category, date }) => {
+const Transaction = ({ data,dispatch }) => {
+  const { type, amount, category, date } = data;
   return (
     <div
       className={`flex justify-between p-1 border-b ${
@@ -19,8 +20,11 @@ const Transaction = ({ type, amount, category, date }) => {
         <span className="w-2/12 text-right">{amount}</span>
         <span className="w-3/12 ">{category}</span>
         <span>{date}</span>
-      
-        <AiFillDelete className="cursor-pointer text-red-500" />
+
+        <AiFillDelete
+          className="cursor-pointer text-red-500"
+          onClick={() => dispatch({ type: "DELETE_TRANSACTION",payload:data.id })}
+        />
       </div>
     </div>
   );
