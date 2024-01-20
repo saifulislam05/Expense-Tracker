@@ -4,7 +4,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 const Transaction = ({ data,dispatch }) => {
-  const { type, amount, category, date } = data;
+  const { type, amount, title, date } = data;
   return (
     <div
       className={`flex justify-between p-1 border-b ${
@@ -18,7 +18,7 @@ const Transaction = ({ data,dispatch }) => {
           <FaMinus className="text-red-500 text-xs" />
         )}
         <span className="w-2/12 text-right">{amount}</span>
-        <span className="w-3/12 ">{category}</span>
+        <span className="w-3/12 ">{title}</span>
         <span>{date}</span>
 
         <AiFillDelete

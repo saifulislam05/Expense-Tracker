@@ -5,9 +5,10 @@ const ExpenseTrackerContext = createContext();
 
 const initialState = {
   transactions: [
-    { id: 1, type: "expense", amount: 100, category: "Mobile", date: "01/19/2024" },
-    { id: 2, type: "income", amount: 200, category: "Salary", date: "01/19/2024" },
+    // { id: 1, type: "income", amount: 200, title: "Salary", date: "01/19/2024" },
+    // { id: 2, type: "expense", amount: 100, title: "Mobile", date: "01/19/2024" },
   ],
+  budget:500,
 };
 
 const expenseReducer = (state, action) => {
