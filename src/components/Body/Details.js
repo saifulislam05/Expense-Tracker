@@ -3,12 +3,12 @@ import {
   getFilteredTransaction,
   getTotalAmound,
 } from "../../CommonFunctions/CommonFunctions";
-import { useTransactions } from "../../Context/Context";
+import { useExpense } from "../../Context/Context";
 import Transactions from "./Transactions";
 
 const Details = () => {
-  const { expenseState } = useTransactions();
-  const { transactions } = expenseState;
+  const { expenseState } = useExpense();
+  const { transactions, budget } = expenseState;
 
   const incomeAmount = getTotalAmound(
     getFilteredTransaction(transactions, "income")
@@ -17,7 +17,7 @@ const Details = () => {
     getFilteredTransaction(transactions, "expense")
   );
 
-  const balance = incomeAmount - expenseAmount;
+  const balance = budget + incomeAmount - expenseAmount;
 
   return (
     <div className="w-full rounded-3xl shadow-2xl shadow-stone-700 ">
@@ -27,14 +27,15 @@ const Details = () => {
         </h1>
       </div>
       <div className="p-6">
+        <p className="text-center text-xl mb-2 font-semibold">
+          Budget: ${budget}
+        </p>
         {transactions.length === 0 ? (
           <p className="text-center mt-4 font-semibold text-warning">
             No Transaction done yet !
           </p>
         ) : (
-          /* Uncommented the below line assuming that 'budget' is defined elsewhere
-             <p className="text-center text-xl mb-2 font-semibold">Budget: ${budget}</p>
-          */ <>
+          <>
             <div className="grid grid-cols-3 mb-3 pb-2 text-center border-b-2">
               <div className=" ">
                 <p className="text-base">Income</p>

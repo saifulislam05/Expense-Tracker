@@ -1,9 +1,9 @@
 import React from "react";
 import Transaction from "./Transaction";
-import { useTransactions } from "../../Context/Context";
+import { useExpense } from "../../Context/Context";
 
 const Transactions = () => {
-  const { expenseState, expenseDispatch } = useTransactions();
+  const { expenseState, expenseDispatch } = useExpense();
   const { transactions } = expenseState;
   return (
     <div className="shadow-xl rounded-xl ">

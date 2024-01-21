@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
-import { useTransactions } from "../../Context/Context";
+import { useExpense } from "../../Context/Context";
 
 const Form = () => {
   const [type, setType] = useState("");
@@ -9,7 +9,7 @@ const Form = () => {
   const [date, setDate] = useState("");
   const [isFormValid, setIsFormValid] = useState(true);
 
-  const { expenseDispatch } = useTransactions();
+  const { expenseDispatch } = useExpense();
 
   const handleSave = () => {
     setIsFormValid(true);

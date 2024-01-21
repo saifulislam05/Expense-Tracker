@@ -8,7 +8,7 @@ const initialState = {
     // { id: 1, type: "income", amount: 200, title: "Salary", date: "01/19/2024" },
     // { id: 2, type: "expense", amount: 100, title: "Mobile", date: "01/19/2024" },
   ],
-  budget:500,
+  budget:0,
 };
 
 const expenseReducer = (state, action) => {
@@ -21,7 +21,14 @@ const expenseReducer = (state, action) => {
     case "DELETE_TRANSACTION":
       return {
         ...state,
-        transactions: state.transactions.filter((transaction) => transaction.id !== action.payload),
+        transactions: state.transactions.filter(
+          (transaction) => transaction.id !== action.payload
+        ),
+      };
+    case "ADD_BUDGET":
+      return {
+        ...state,
+        budget:action.payload
       };
     default:
       return state;
@@ -41,7 +48,7 @@ const ExpenseTrackerProvider = ({ children }) => {
   );
 };
 
-export const useTransactions = () => {
+export const useExpense = () => {
   const contextValue = useContext(ExpenseTrackerContext);
   return contextValue;
 };
